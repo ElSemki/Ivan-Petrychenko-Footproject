@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
     50000
   );
 
-  modal('[data-modal', '.modal', modalTimerId);
+  modal('[data-modal]', '.modal', modalTimerId);
   tabs(
     '.tabheader__items',
     '.tabcontent',
