@@ -5,9 +5,9 @@ function cards() {
 
   // Шаблоны карточек Class
   class MenuCard {
-    constructor(img, alt, title, descr, price, parentSelector, ...classes) {
+    constructor(img, altimg, title, descr, price, parentSelector, ...classes) {
       this.img = img;
-      this.alt = alt;
+      this.altimg = altimg;
       this.title = title;
       this.descr = descr;
       this.price = price;
@@ -31,7 +31,7 @@ function cards() {
       }
 
       card.innerHTML = `
-      <img src=${this.img} alt=${this.alt} />
+      <img src=${this.img} alt=${this.altimg} />
       <h3 class="menu__item-subtitle">${this.title}</h3>
       <div class="menu__item-descr">${this.descr}</div>
       <div class="menu__item-divider"></div>
@@ -49,11 +49,11 @@ function cards() {
   //   // Принимаем данные (объект)
   //   .then((data) => {
   //     // Так-как нам придет массив карточек, переберем их и сделаем с ними действимя
-  //     // Вызываем функцию/класс для создания карточек, вместо передачи параметров (obj.image, obj.alt и тд.) передаем деструктуризацию
-  //     data.forEach(({ img, alt, title, descr, price }) => {
+  //     // Вызываем функцию/класс для создания карточек, вместо передачи параметров (obj.image, obj.altimg и тд.) передаем деструктуризацию
+  //     data.forEach(({ img, altimg, title, descr, price }) => {
   //       new MenuCard(
   //         img,
-  //         alt,
+  //         altimg,
   //         title,
   //         descr,
   //         price,
@@ -64,8 +64,15 @@ function cards() {
 
   // Получение карточек при помощи библиотеки axios
   axios.get('http://localhost:3000/menu').then((data) => {
-    data.data.forEach(({ img, alt, title, descr, price }) => {
-      new MenuCard(img, alt, title, descr, price, '.menu .container').render();
+    data.data.forEach(({ img, altimg, title, descr, price }) => {
+      new MenuCard(
+        img,
+        altimg,
+        title,
+        descr,
+        price,
+        '.menu .container'
+      ).render();
     });
   });
 
@@ -74,12 +81,12 @@ function cards() {
   // getResource('http://localhost:3000/menu').then((data) => creaeteCard(data));
 
   // function creaeteCard(data) {
-  //   data.forEach(({ img, alt, title, descr, price }) => {
+  //   data.forEach(({ img, altimg, title, descr, price }) => {
   //     const element = document.createElement('div');
   //     price *= 27;
   //     element.classList.add('menu__item');
   //     element.innerHTML = `
-  //       <img src=${img} alt=${alt} />
+  //       <img src=${img} alt=${altimg} />
   //       <h3 class="menu__item-subtitle">${title}</h3>
   //       <div class="menu__item-descr">${descr}</div>
   //       <div class="menu__item-divider"></div>

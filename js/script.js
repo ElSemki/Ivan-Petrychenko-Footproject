@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', () => {
     '.tabheader__item',
     'tabheader__item_active'
   );
-  timer('.timer', '2023-04-29');
+  timer('.timer', '2023-05-06');
   cards();
   slider({
     container: '.offer__slider',
